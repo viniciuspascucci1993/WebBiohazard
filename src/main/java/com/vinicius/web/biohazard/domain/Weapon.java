@@ -3,10 +3,18 @@ package com.vinicius.web.biohazard.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 /**
  * Classe responsável por conter os atributos da arma.
  * @author Vinicius-PC - Vinicius Torres Pascucci.
  */
+@Entity
 public class Weapon implements Serializable {
 
 	/**
@@ -17,6 +25,8 @@ public class Weapon implements Serializable {
 	/**
 	 * Represents the weapon's identifier.
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	/**
@@ -42,6 +52,8 @@ public class Weapon implements Serializable {
 	/**
 	 * Represent one weapon's category.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "weapon_id")
 	private WeaponCategory weaponCategory;
 	
 	/**

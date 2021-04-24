@@ -4,10 +4,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 /**
  * Classe responsável por conter os atributos da categoria da arma, 
  * @author Vinicius-PC - Vinicius Torres Pascucci.
  */
+@Entity
 public class WeaponCategory implements Serializable {
 
 	/**
@@ -18,6 +25,8 @@ public class WeaponCategory implements Serializable {
 	/**
 	 * Represents the category weapon's identifier.
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	/**
@@ -33,6 +42,7 @@ public class WeaponCategory implements Serializable {
 	/**
 	 * Represent a List of weapons.
 	 */
+	@OneToMany(mappedBy = "weapon")
 	private List<Weapon> weapons = new ArrayList<Weapon>();
 	
 	/**
