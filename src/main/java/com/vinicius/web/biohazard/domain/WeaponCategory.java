@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.Length;
+
 /**
  * Classe responsável por conter os atributos da categoria da arma, 
  * @author Vinicius-PC - Vinicius Torres Pascucci.
@@ -37,6 +39,7 @@ public class WeaponCategory implements Serializable {
 	/**
 	 * Represents the description of the weapon.
 	 */
+	@Length( max = 500)
 	private String description;
 	
 	/**
