@@ -53,7 +53,7 @@ public class Weapon implements Serializable {
 	 * Represent one weapon's category.
 	 */
 	@ManyToOne
-	@JoinColumn(name = "weapon_id")
+	@JoinColumn(name = "weaponCategory_id")
 	private WeaponCategory weaponCategory;
 	
 	/**
@@ -163,7 +163,7 @@ public class Weapon implements Serializable {
 
 	/**
 	 * get() method.
-	 * @return weaponCategory.
+	 * @return weapon.
 	 */
 	public WeaponCategory getWeaponCategory() {
 		return this.weaponCategory;
