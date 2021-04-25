@@ -1,5 +1,6 @@
 package com.vinicius.web.biohazard.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class WeaponCategoryService {
 		
 		Optional<WeaponCategory> weaponCategory = weaponCategoryRepository.findById(id);
 		return weaponCategory.orElseThrow(() -> new ObjectNotFoundException("Identifier was not found! Id:" + id + ", Type: " + WeaponCategory.class.getName()));
+	}
+	
+	public List<WeaponCategory> findAll() {
+		
+		return weaponCategoryRepository.findAll();
 	}
 }
