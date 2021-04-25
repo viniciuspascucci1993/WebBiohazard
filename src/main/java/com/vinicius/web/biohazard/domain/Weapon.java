@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Classe responsável por conter os atributos da arma.
  * @author Vinicius-PC - Vinicius Torres Pascucci.
@@ -52,6 +54,7 @@ public class Weapon implements Serializable {
 	/**
 	 * Represent one weapon's category.
 	 */
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "weaponCategory_id")
 	private WeaponCategory weaponCategory;
