@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.vinicius.web.biohazard.domain.WeaponCategory;
 import com.vinicius.web.biohazard.repositories.WeaponCategoryRepository;
+import com.vinicius.web.biohazard.service.exception.ObjectNotFoundException;
 
 /**
  * Classe de service responsável por conter operações de CRUD só que pela camada de serviço que será alimentada pela camada de resource.
@@ -25,6 +26,6 @@ public class WeaponCategoryService {
 	public WeaponCategory findById( Integer id ) {
 		
 		Optional<WeaponCategory> weaponCategory = weaponCategoryRepository.findById(id);
-		return weaponCategory.orElse(null);
+		return weaponCategory.orElseThrow(() -> new ObjectNotFoundException("Identifier was not found! Id:" + id + ", Type: " + WeaponCategory.class.getName()));
 	}
 }
