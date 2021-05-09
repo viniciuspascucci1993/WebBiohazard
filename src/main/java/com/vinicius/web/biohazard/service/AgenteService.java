@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vinicius.web.biohazard.domain.Agent;
+import com.vinicius.web.biohazard.domain.dto.AgentDTO;
 import com.vinicius.web.biohazard.repositories.AgentRepository;
 import com.vinicius.web.biohazard.service.exception.ObjectNotFoundException;
 
@@ -37,6 +38,16 @@ public class AgenteService {
 	public Agent create( Agent obj ) {
 		
 		obj.setId(null);
+		return agentRepository.save(obj);
+	}
+	
+	public Agent update( Integer id, AgentDTO objDto ) {
+		
+		Agent obj = findById(id);
+		
+		obj.setName(objDto.getName());
+		obj.setCode(objDto.getCode());
+		
 		return agentRepository.save(obj);
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vinicius.web.biohazard.domain.WeaponCategory;
+import com.vinicius.web.biohazard.domain.dto.WeaponCategoryDTO;
 import com.vinicius.web.biohazard.repositories.WeaponCategoryRepository;
 import com.vinicius.web.biohazard.service.exception.ObjectNotFoundException;
 
@@ -38,6 +39,16 @@ public class WeaponCategoryService {
 	public WeaponCategory create( WeaponCategory obj ) {
 		
 		obj.setId(null);
+		return weaponCategoryRepository.save(obj);
+	}
+
+	public WeaponCategory update(Integer id, WeaponCategoryDTO objDto) {
+		
+		WeaponCategory obj = findById(id);
+		
+		obj.setName(objDto.getName());
+		obj.setDescription(objDto.getDescription());
+		
 		return weaponCategoryRepository.save(obj);
 	}
 }

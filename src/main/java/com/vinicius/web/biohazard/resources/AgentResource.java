@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,6 +60,14 @@ public class AgentResource {
 		
 		return ResponseEntity.created(uri).body(agentObj);
 		
+	}
+	
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<AgentDTO> update( @PathVariable Integer id, @RequestBody AgentDTO objDto ) {
+		
+		Agent newObj = agenteService.update(id, objDto);
+		
+		return ResponseEntity.ok().body(new AgentDTO(newObj));
 	}
 
 }
