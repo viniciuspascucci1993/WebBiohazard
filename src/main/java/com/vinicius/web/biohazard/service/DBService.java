@@ -60,8 +60,8 @@ public class DBService {
 		
 		Weapon weapon4 = new Weapon(null, "Bazuca (Bazooka)", 5500.00, "Mikhail Victor", LocalDate.of(1861, 01, 04), weaponCategory4);
 		
-		Agent agent = new Agent(null, "jill.valentime@starscorp.com", 1533L, UUID.randomUUID().toString(), TypeDivision.STARS);
-		Agent agent2 = new Agent(null, "carlos.oliveira@ubcs.com", 2231L, UUID.randomUUID().toString(), TypeDivision.UBCS);
+		Agent agent = new Agent(null, "Jill Valentime", "jill.valentime@starscorp.com", 1533L, UUID.randomUUID().toString(), TypeDivision.STARS);
+		Agent agent2 = new Agent(null, "Carlos Oliveira", "carlos.oliveira@ubcs.com", 2231L, UUID.randomUUID().toString(), TypeDivision.UBCS);
 		
 		
 		weaponCategory.getWeaponCategory().addAll(Arrays.asList(weapon));

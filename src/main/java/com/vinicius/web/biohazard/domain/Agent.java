@@ -33,6 +33,11 @@ public class Agent implements Serializable {
 	private Integer id;
 	
 	/**
+	 * Represents the name of the category.
+	 */
+	private String name;
+	
+	/**
 	 * Represents de email.
 	 */
 	private String email;
@@ -69,9 +74,10 @@ public class Agent implements Serializable {
 	 * @param numberCode - String - memberCode.
 	 * @param typeDivision - TypeDivision - typeDivision
 	 */
-	public Agent(Integer id, String email, Long code, String numberCode, TypeDivision typeDivision) {
+	public Agent(Integer id, String name, String email, Long code, String numberCode, TypeDivision typeDivision) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.email = email;
 		this.code = code;
 		this.numberCode = numberCode;
@@ -92,6 +98,23 @@ public class Agent implements Serializable {
 	 */
 	public void setId(final Integer id) {
 		this.id = id;
+	}
+	
+
+	/**
+	 * get() method.
+	 * @return name.
+	 */
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * set() method.
+	 * @param name as param.
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**

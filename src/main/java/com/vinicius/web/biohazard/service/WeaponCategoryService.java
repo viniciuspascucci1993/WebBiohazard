@@ -34,4 +34,10 @@ public class WeaponCategoryService {
 		
 		return weaponCategoryRepository.findAll();
 	}
+	
+	public WeaponCategory create( WeaponCategory obj ) {
+		
+		obj.setId(null);
+		return weaponCategoryRepository.save(obj);
+	}
 }
