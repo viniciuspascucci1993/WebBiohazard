@@ -51,4 +51,12 @@ public class WeaponCategoryService {
 		
 		return weaponCategoryRepository.save(obj);
 	}
+
+	public void delete(Integer id) {
+		
+		findById(id);
+		
+		weaponCategoryRepository.deleteById(id);
+		
+	}
 }

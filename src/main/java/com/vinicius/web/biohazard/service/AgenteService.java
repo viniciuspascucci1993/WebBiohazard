@@ -51,4 +51,12 @@ public class AgenteService {
 		return agentRepository.save(obj);
 	}
 	
+	public void delete(Integer id) {
+		
+		findById(id);
+		
+		agentRepository.deleteById(id);
+		
+	}
+	
 }
