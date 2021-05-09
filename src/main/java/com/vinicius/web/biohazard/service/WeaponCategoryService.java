@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.vinicius.web.biohazard.domain.WeaponCategory;
@@ -56,7 +57,12 @@ public class WeaponCategoryService {
 		
 		findById(id);
 		
-		weaponCategoryRepository.deleteById(id);
-		
+		try {
+			weaponCategoryRepository.deleteById(id);
+			
+		} catch (DataIntegrityViolationException e) {
+			throw new 
+				com.vinicius.web.biohazard.service.exception.DataIntegrityViolationException("The Weapon-Category cannot be deleted because has associate Weapons");
+		}
 	}
 }

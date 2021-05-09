@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.vinicius.web.biohazard.service.exception.DataIntegrityViolationException;
 import com.vinicius.web.biohazard.service.exception.ObjectNotFoundException;
 
 /**
@@ -22,5 +23,13 @@ public class ResourceExceptionHandler {
 		StandardErrorHandler standardErrorHandler = new StandardErrorHandler(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), e.getMessage());
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(standardErrorHandler);
+	}
+	
+	@ExceptionHandler(DataIntegrityViolationException.class)
+	public ResponseEntity<StandardErrorHandler> dataIntegrityViolationException( DataIntegrityViolationException e, ServletRequest servletRequest ) {
+		
+		StandardErrorHandler standardErrorHandler = new StandardErrorHandler(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardErrorHandler);
 	}
 }
