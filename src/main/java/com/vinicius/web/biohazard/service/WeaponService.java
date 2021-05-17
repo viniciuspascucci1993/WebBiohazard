@@ -1,0 +1,33 @@
+package com.vinicius.web.biohazard.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vinicius.web.biohazard.domain.Weapon;
+import com.vinicius.web.biohazard.repositories.WeaponRepository;
+import com.vinicius.web.biohazard.service.exception.ObjectNotFoundException;
+
+/**
+ * Classe de service responsável por conter operações de CRUD só que pela camada de serviço que será alimentada pela camada de resource.
+ * @author Vinicius-PC - Vinicius Torres Pascucci.
+ */
+@Service
+public class WeaponService {
+	
+	private WeaponRepository weaponRepository;
+
+	@Autowired
+	public WeaponService(WeaponRepository weaponRepository) {
+		this.weaponRepository = weaponRepository;
+	}
+	
+	public Weapon findById( Integer id ) {
+		
+		Optional<Weapon> weapon = weaponRepository.findById(id);
+		return weapon.orElseThrow(() -> new ObjectNotFoundException("Identifier was not found! Id:" + id + ", Type: " + Weapon.class.getName()));
+	}
+	
+
+}
