@@ -46,7 +46,7 @@ public class WeaponCategory implements Serializable {
 	 * Represent a List of weapons.
 	 */
 	@OneToMany(mappedBy = "weaponCategory")
-	private List<Weapon> weaponCategory = new ArrayList<Weapon>();
+	private List<Weapon> weapon = new ArrayList<Weapon>();
 	
 	/**
 	 * The constructor empty.
@@ -116,18 +116,18 @@ public class WeaponCategory implements Serializable {
 
 	/**
 	 * get() method.
-	 * @return a List of category Weapon.
+	 * @return a List of weapon.
 	 */
-	public List<Weapon> getWeaponCategory() {
-		return this.weaponCategory;
+	public List<Weapon> getWeapon() {
+		return this.weapon;
 	}
 
 	/**
 	 * set() method.
-	 * @param weaponsCategory - List of weaponCategory's as param.
+	 * @param weaponsCategory - List of weapon  as param.
 	 */
-	public void setWeaponCategory(List<Weapon> weaponCategory) {
-		this.weaponCategory = weaponCategory;
+	public void setWeapon(List<Weapon> weapon) {
+		this.weapon = weapon;
 	}
 
 	/**
