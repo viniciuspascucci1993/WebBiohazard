@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,7 +56,7 @@ public class WeaponCategoryResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<WeaponCategory> create( @RequestBody WeaponCategory weaponCategory ) {
+	public ResponseEntity<WeaponCategory> create( @Valid @RequestBody WeaponCategory weaponCategory ) {
 		
 		weaponCategory = weaponCategoryService.create(weaponCategory);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(weaponCategory.getId()).toUri();
@@ -64,7 +66,7 @@ public class WeaponCategoryResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<WeaponCategoryDTO> update( @PathVariable Integer id, @RequestBody WeaponCategoryDTO objDto ) {
+	public ResponseEntity<WeaponCategoryDTO> update( @Valid @PathVariable Integer id, @RequestBody WeaponCategoryDTO objDto ) {
 		
 		WeaponCategory newObj = weaponCategoryService.update(id, objDto);
 		

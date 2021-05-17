@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -56,22 +58,22 @@ public class WeaponResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Weapon> update( @PathVariable Integer id, @RequestBody Weapon obj ) {
+	public ResponseEntity<Weapon> update(  @PathVariable Integer id, @Valid @RequestBody Weapon obj ) {
 		
 		Weapon newObj = weaponService.update(id, obj );
 		return ResponseEntity.ok().body(newObj); 
 	}
 	
 	@PatchMapping(value = "/{id}")
-	public ResponseEntity<Weapon> updatePatch( @PathVariable Integer id, @RequestBody Weapon obj ) {
+	public ResponseEntity<Weapon> updatePatch( @PathVariable Integer id, @Valid @RequestBody Weapon obj ) {
 		
 		Weapon newObj = weaponService.update(id, obj );
 		return ResponseEntity.ok().body(newObj); 
 	}
 	
 	@PostMapping
-	public ResponseEntity<Weapon> create( @RequestParam(value = "weaponCategory", defaultValue = "0") Integer id_weap,
-			@RequestBody Weapon obj) {
+	public ResponseEntity<Weapon> create(  @RequestParam(value = "weaponCategory", defaultValue = "0") Integer id_weap,
+			@Valid @RequestBody Weapon obj) {
 		
 		Weapon newObj = weaponService.create(id_weap, obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/weapons/{id}").buildAndExpand(newObj.getId()).toUri();

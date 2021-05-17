@@ -2,6 +2,8 @@ package com.vinicius.web.biohazard.domain.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.hibernate.validator.constraints.Length;
 
 import com.vinicius.web.biohazard.domain.WeaponCategory;
@@ -25,12 +27,15 @@ public class WeaponCategoryDTO implements Serializable {
 	/**
 	 * Represents the name of the category.
 	 */
+	@NotEmpty(message = "Field Name is required")
+	@Length(min = 3, max = 20, message = "The Field name should have between 3 and 100 characters")
 	private String name;
 	
 	/**
 	 * Represents the description of the weapon.
 	 */
-	@Length( max = 500)
+	@NotEmpty(message = "Field Description is required")
+	@Length(min = 3, max = 500, message = "The Field description should have between 3 and 500 characters")
 	private String description;
 	
 	/**
