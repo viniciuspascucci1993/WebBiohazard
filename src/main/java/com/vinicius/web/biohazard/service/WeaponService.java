@@ -66,6 +66,13 @@ public class WeaponService {
 		
 		return weaponRepository.save(obj);
 	}
+
+	public void delete(Integer id) {
+		
+		Weapon obj = findById(id);
+		weaponRepository.delete(obj);
+		
+	}
 	
 
 }
