@@ -38,6 +38,23 @@ public class WeaponService {
 		weaponCategoryService.findById(id_weap);
 		return weaponRepository.findAllByWeaponCategory(id_weap);
 	}
+
+	public Weapon update(Integer id, Weapon obj) {
+		
+		Weapon newObj = findById(id);
+		updateData(newObj, obj);
+		
+		return weaponRepository.save(newObj);
+	}
+
+	private void updateData(Weapon newObj, Weapon obj) {
+		
+		newObj.setName(obj.getName());
+		newObj.setPrice(obj.getPrice());
+		newObj.setManufactor(obj.getManufactor());
+		newObj.setDateManufacturing(obj.getDateManufacturing());
+		
+	}
 	
 
 }
