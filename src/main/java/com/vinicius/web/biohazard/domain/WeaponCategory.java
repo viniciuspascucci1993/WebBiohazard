@@ -36,14 +36,14 @@ public class WeaponCategory implements Serializable {
 	 * Represents the name of the category.
 	 */
 	@NotEmpty(message = "Field Name is required")
-	@Length(min = 3, max = 20, message = "The Field name should have between 3 and 100 characters")
+	@Length(min = 3, max = 200, message = "The Field name should have between 3 and 200 characters")
 	private String name;
 	
 	/**
 	 * Represents the description of the weapon.
 	 */
 	@NotEmpty(message = "Field Description is required")
-	@Length(min = 3, max = 500, message = "The Field description should have between 3 and 500 characters")
+	@Length(min = 1, max = 500, message = "The Field description should have between 1 and 500 characters")
 	private String description;
 	
 	/**

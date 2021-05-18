@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ import com.vinicius.web.biohazard.service.WeaponCategoryService;
  * Classe de resource responsável por realizar operações de CRUD.
  * @author Vinicius-PC - Vinicius Torres Pascucci.
  */
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/weapon-category")
 public class WeaponCategoryResource {

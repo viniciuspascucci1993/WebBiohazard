@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,6 +37,8 @@ public class Weapon implements Serializable {
 	/**
 	 * Represents the name of the weapon.
 	 */
+	@NotEmpty(message = "Field Description is required")
+	@Length(min = 3, max = 200, message = "The Field description should have between 3 and 200 characters")
 	private String name;
 	
 	/**
